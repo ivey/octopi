@@ -1,19 +1,65 @@
 module Octopi
-  class Issue < Base
-    include Resource
-    STATES = %w{open closed}
-
-    find_path "/issues/list/:query"
-    resource_path "/issues/show/:id"
+  class Issue < V3Class
+    class User < V3Class
+      property :login
+      property :id,            :transformer => SMART_NUMBER_TRANSFORMER
+      property :gravatar_url
+      property :url
+    end
     
+    class PullRequest < V3Class
+      property :html_url
+      property :diff_url
+      property :patch_url
+    end
     
-    attr_accessor :repository, :user, :updated_at, :votes, :number, :title, :body, :closed_at, :labels, :state, :created_at
+    attr_accessor :repo
     
-    def self.search(options={})
-      ensure_hash(options)
-      options[:state] ||= "open"
-      user, repo = gather_details(options)
-      Api.api.get("/issues/search/#{user}/#{repo}/#{options[:state]}/#{options[:keyword]}")
+    class Comment < V3Class
+      property :url
+      property :body
+      property :user,        :transformer => User
+      property :created_at
+      property :updated_at
+    end
+    
+    class Label < V3Class
+      property :url
+      property :name
+      property :color
+    end
+    
+    class Milestone < V3Class
+      property :url
+      property :number,      :transformer => SMART_NUMBER_TRANSFORMER
+      property :state
+      property :title
+      property :description
+      property :creator,     :transformer => User
+      property :open_issues, :transformer => SMART_NUMBER_TRANSFORMER
+      property :closed_issues, :transformer => SMART_NUMBER_TRANSFORMER
+      property :created_at
+      property :due_on
+    end
+    
+    property :url
+    property :html_url
+    property :number,        :transformer => SMART_NUMBER_TRANSFORMER
+    property :state
+    property :title
+    property :body
+    property :user,          :transformer => User
+    property :labels,        :transformer => Label
+    property :assignee,      :transformer => User
+    property :milestone,     :transformer => Milestone
+    property :comments,      :transformer => SMART_NUMBER_TRANSFORMER
+    property :pull_request,  :transformer => PullRequest
+    property :closed_at
+    property :created_at
+    property :updated_at
+    
+    def self.search(options={ })
+      raise "No longer available in V3 API. Bug technoweenie about this."
     end
     
     # Finds all issues for a given Repository
@@ -30,89 +76,89 @@ module Octopi
     #   find_all("octopi", :user => "fcoury") # user must be provided
     #   find_all(:user => "fcoury", :repo => "octopi") # state defaults to open
     #
-    def self.find_all(options={})
-      ensure_hash(options)
-      user, repo = gather_details(options)
-      states = [options[:state]] if options[:state]
-      states ||= ["open", "closed"]
-      issues = []
-      states.each do |state|
-        validate_args(user => :user, repo.name => :repo, state => :state)
-        issues << super(user, repo.name, state)
+    def self.find_all(*args)
+      user, repo, rest = extract_repo(*args)
+      if rest.is_a?(Hash)
+        options = rest
+      else
+        options = rest.shift || { }
       end
-      issues.flatten.each { |i| i.repository = repo }
+      puts "Hey! GitHub API v3 no longer returns all issues, and defaults state = 'open'" unless options[:state]
+      issues = get "/repos/#{user}/#{repo}/issues", :transform => self, :extra_query => options
+      issues.each { |i| i.repo = [user,repo] }
+      issues
     end
-  
-    # TODO: Make find use hashes like find_all
-    def self.find(options={})
-      ensure_hash(options)
-      # Do not cache issues, as they may change via other means.
-      @cache = false
-      user, repo = gather_details(options)
-      
-      validate_args(user => :user, repo => :repo)
-      issue = super user, repo, options[:number]
-      issue.repository = repo
+
+    def self.find(*args)
+      user, repo, rest = extract_repo(*args)
+      if rest.is_a?(Hash)
+        num = rest.delete(:id)
+        num ||= rest.delete(:number)
+        options = rest
+      else
+        num = rest.shift
+        options = rest.shift || { }
+      end
+      issue = get "/repos/#{user}/#{repo}/issues/#{num}", :transform => self, :extra_query => options
+      issue.repo = [user, repo]
       issue
     end
     
-    def self.open(options={})
-      ensure_hash(options)
-      user, repo = gather_details(options)
-      data = Api.api.post("/issues/open/#{user}/#{repo.name}", options[:params])
-      issue = new(data['issue'])
-      issue.repository = repo
-      issue
+    def self.open(*args)
+      user, repo, rest = extract_repo(*args)
+      if rest.is_a?(Hash)
+        options = rest
+      else
+        options = rest.shift || { }
+      end
+      options[:state] ||= "open"
+      find_all(user, repo, options)
     end
     
-    # Re-opens an issue.
+    def edit(options)
+      patch "/repos/#{repo[0]}/#{repo[1]}/issues/#{number}", options
+    end
+    
     def reopen!
-      data = Api.api.post(command_path("reopen"))
+      edit :state => 'open'
       self.state = 'open'
-      self
     end
     
     def close!
-      data = Api.api.post(command_path("close"))
+      edit :state => 'closed'
       self.state = 'closed'
-      self
     end
     
     def save
-      data = Api.api.post(command_path("edit"), { :title => title, :body => body })
+      edit :title => title, :body => body, :state => state
       self
     end
     
-    %w(add remove).each do |oper|
-      define_method("#{oper}_label") do |*labels|
-        labels.each do |label|
-          Api.api.post("#{prefix("label/#{oper}")}/#{label}/#{number}", { :cache => false })
-          if oper == "add"
-            self.labels << label
-          else
-            self.labels -= [label]
-          end
-        end
+    def add_label(*new_labels)
+      new_labels.each do |label|
+        self.labels << Label.new(:name => label)
       end
+      edit :labels => labels.collect(&:name) 
     end
-
-    def comment(comment)
-      data = Api.api.post(command_path("comment"), { :comment => comment })
-      IssueComment.new(data['comment'])
+    
+    def remove_label(*old_labels)
+      old_labels.each do |label|
+        self.labels.reject! { |l| l.name == label }
+      end
+      edit :labels => labels.collect(&:name)
     end
     
     def comments
-      data = Api.api.get(command_path("comments"))
-      data["comments"].map { |c| IssueComment.new(c) }
+      get "/repos/#{repo[0]}/#{repo[1]}/issues/#{number}/comments", :transform => Comment
     end
     
-    private
-    def prefix(command)
-      "/issues/#{command}/#{repository.owner}/#{repository.name}"
+    def find_comment
+      get "/repos/#{repo[0]}/#{repo[1]}/issues/comments/#{number}", :transform => Comment
     end
     
-    def command_path(command)
-      "#{prefix(command)}/#{number}"
+    def comment(comment)
+      post "/repos/#{repo[0]}/#{repo[1]}/issues/#{number}/comments", :extra_query => {:comment => comment}, :transform => Comment
     end
+    
   end
 end

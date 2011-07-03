@@ -1,0 +1,524 @@
+HTTP/1.1 200 OK
+Server: nginx/1.0.4
+Date: Sun, 03 Jul 2011 02:41:04 GMT
+Content-Type: application/json
+Connection: keep-alive
+Status: 200 OK
+X-RateLimit-Limit: 5000
+X-RateLimit-Remaining: 4996
+Content-Length: 25141
+
+[
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2011-07-02T19:47:21Z",
+    "created_at": "2011-04-29T20:45:29Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/61",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/jeffWelling",
+      "avatar_url": "https://secure.gravatar.com/avatar/96be9ea59dea46616afed434fd07dcf5?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "jeffWelling",
+      "id": 105077
+    },
+    "number": 61,
+    "comments": 4,
+    "title": "Github API V3",
+    "body": "Feature request for upgrading to the Github API version 3.\r\n\r\nVersion 3 has support for editing comments on an issue, while IIUC version 2 does not.",
+    "html_url": "https://github.com/fcoury/octopi/issues/61",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2011-04-28T04:11:07Z",
+    "created_at": "2011-04-28T02:51:23Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/59",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/jeffWelling",
+      "avatar_url": "https://secure.gravatar.com/avatar/96be9ea59dea46616afed434fd07dcf5?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "jeffWelling",
+      "id": 105077
+    },
+    "number": 59,
+    "comments": 1,
+    "title": "Explicit Authentication example is wrong",
+    "body": "The example of Explicit Authentication number 1 is wrong, trying this code in irb shows;\r\nhttp://pastie.org/1841919",
+    "html_url": "https://github.com/fcoury/octopi/issues/59",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2011-05-10T00:50:03Z",
+    "created_at": "2011-03-26T18:51:04Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/55",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/scottwb",
+      "avatar_url": "https://secure.gravatar.com/avatar/f39f37543b7245c070192a8dfc5bd305?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "scottwb",
+      "id": 91148
+    },
+    "number": 55,
+    "comments": 3,
+    "title": "Octopi::Issue.open raises APIError even though it succeeded with a 201 status code.",
+    "body": "A fix for this was committed in a fork by @jpgriffo at:  ac180183636843ef1005b6648430bafe3304e454. It would be great to see this pulled into the next gem release.",
+    "html_url": "https://github.com/fcoury/octopi/issues/55",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2011-03-26T21:42:51Z",
+    "created_at": "2011-02-26T10:10:41Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/54",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/micahbrich",
+      "avatar_url": "https://secure.gravatar.com/avatar/ec3ac4b7980456ff480f541fe5296e87?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "micahbrich",
+      "id": 25366
+    },
+    "number": 54,
+    "comments": 1,
+    "title": "Repository.issues owner typo!",
+    "body": "I was reading through the code in /lib/octopi/repository.rb, and found a little typo on line #100.\r\n\r\n    def issues(state = \"open\")\r\n      IssueSet.new(Octopi::Issue.find_all(:user => owner, :repository => self))\r\n    end\r\n\r\nas far as I can tell, ought to be:\r\n\r\n    def issues(state = \"open\")\r\n      IssueSet.new(Octopi::Issue.find_all(:user => self.owner, :repository => self))\r\n    end\r\n\r\nMy app couldn't find the user, because it didn't know what \"user\" was, as opposed to \"self.user.\" Thought I'd share my findings!",
+    "html_url": "https://github.com/fcoury/octopi/issues/54",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2010-04-05T19:51:40Z",
+    "created_at": "2010-04-05T19:51:40Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/46",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/kristianmandrup",
+      "avatar_url": "https://secure.gravatar.com/avatar/2a018f8b16a3fe7273afde907c2e1bec?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "kristianmandrup",
+      "id": 125005
+    },
+    "number": 46,
+    "comments": 0,
+    "title": "Repository not deleted when using delete!",
+    "body": "<pre>\r\n    desc \"delete NAME\", \"delete public repository NAME from your github account\"    \r\n    def delete(name)        \r\n      authenticated do                 \r\n        user = Api.api.user\r\n        repository = user.repositories.find(name)\r\n        say \"Repository #{name} was deleted successfully\" if repository.delete!\r\n      end\r\n    end\r\n</pre>\r\n\r\n<pre>\r\nkristian-mandrups-macbook-pro:lib kristianconsult$ thor github:repo:delete cool_stuff\r\nW, [2010-04-05T15:47:58.330303 #22724]  WARN -- : Using in memory store\r\nRepository cool_stuff was deleted successfully\r\n</pre>\r\n\r\nBut looking at my github account, the repo was not deleted.\r\nIs there a better way I can determine if the repository was deleted? What does the warning mean?\r\nIt creates a repository ok with this warning. How do I disable the in memory store?\r\n\r\nThanks!",
+    "html_url": "https://github.com/fcoury/octopi/issues/46",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2010-04-05T19:31:22Z",
+    "created_at": "2010-04-05T19:23:39Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/45",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/kristianmandrup",
+      "avatar_url": "https://secure.gravatar.com/avatar/2a018f8b16a3fe7273afde907c2e1bec?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "kristianmandrup",
+      "id": 125005
+    },
+    "number": 45,
+    "comments": 1,
+    "title": "Error creating repository - network or config error?",
+    "body": "<pre>\r\nmodule Github\r\n  class Repo < Thor\r\n    include Octopi\r\n\r\n    desc \"create NAME\", \"create a new public repository\"\r\n    method_option :description,      :type => :string\r\n    method_option :homepage,         :type => :string\r\n    method_option :private,          :type => :boolean\r\n    def create(name)           \r\n      authenticated do\r\n        repo_options = {:name => name}\r\n        [:description, :homepage ].each{|o| repo_options[o] = options[o] if options[o]}\r\n        repo_options[:public] = 0 if options[:private]                \r\n      \r\n        Repository.create(repo_options)               \r\n      end\r\n    end\r\n...\r\nend\r\n</pre>\r\n\r\nRunning thor task\r\n\r\n<pre>\r\nkristian-mandrups-macbook-pro:lib kristianconsult$ thor github:repo:create cool_stuff\r\nW, [2010-04-05T15:18:50.956361 #15333]  WARN -- : Using in memory store\r\nI, [2010-04-05T15:18:57.762911 #15333]  INFO -- : Failed to fetch from API - Exception: APICache::TimeoutError: Timed out when calling API (timeout 5s)\r\nW, [2010-04-05T15:18:57.763000 #15333]  WARN -- : Data not available in the cache or from API for key \r\n/Users/kristianconsult/.rvm/gems/ruby-1.9.1-p378/gems/api_cache-0.2.0/lib/api_cache/api.rb:47:in `rescue in get': Timed out when calling API (timeout 5s) (APICache::TimeoutError)\r\n\tfrom /Users/kristianconsult/.rvm/gems/ruby-1.9.1-p378/gems/api_cache-0.2.0/lib/api_cache/api.rb:35:in `get'\r\n\tfrom /Users/kristianconsult/.rvm/gems/ruby-1.9.1-p378/gems/api_cache-0.2.0/lib/api_cache.rb:107:in `get'\r\n\tfrom /Users/kristianconsult/.rvm/gems/ruby-1.9.1-p378/gems/octopi-0.2.8/lib/octopi/api.rb:178:in `submit'\r\n\tfrom /Users/kristianconsult/.rvm/gems/ruby-1.9.1-p378/gems/octopi-0.2.8/lib/octopi/api.rb:142:in `post'\r\n\tfrom /Users/kristianconsult/.rvm/gems/ruby-1.9.1-p378/gems/octopi-0.2.8/lib/octopi/repository.rb:118:in `create'\r\n\tfrom /Users/kristianconsult/Development/Languages/Ruby/Apps/Task-apps/Thor-tasks/github_tasks/lib/github.thor:17:in `block in create'\r\n\tfrom /Users/kristianconsult/.rvm/gems/ruby-1.9.1-p378/gems/octopi-0.2.8/lib/octopi.rb:33:in `block in authenticated'\r\n</pre>",
+    "html_url": "https://github.com/fcoury/octopi/issues/45",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2011-04-13T22:29:23Z",
+    "created_at": "2010-01-22T23:18:17Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/44",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/bry4n",
+      "avatar_url": "https://secure.gravatar.com/avatar/bb108e4ccd3d3d79350b167b62e2db2a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "bry4n",
+      "id": 73400
+    },
+    "number": 44,
+    "comments": 2,
+    "title": "Paginated Results for Commits",
+    "body": "It seems like Commit API v2 supports pagination.\r\n\r\nSee:\r\n\r\n    curl \"http://github.com/api/v2/json/commits/list/mojombo/grit/master?page=3\"\r\n\r\nIt would be nice if we can use something like this way or other way:\r\n\r\n    repo = Repository.find(:user => \"fcoury\", :name => \"octopi\", :page => 3)\r\n\r\n",
+    "html_url": "https://github.com/fcoury/octopi/issues/44",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2009-12-26T04:32:27Z",
+    "created_at": "2009-12-25T06:38:37Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/40",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/icco",
+      "avatar_url": "https://secure.gravatar.com/avatar/229e3746f6f5100c1d7d5d7a8a5b82d5?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "icco",
+      "id": 20201
+    },
+    "number": 40,
+    "comments": 5,
+    "title": "Error listing issues for a project",
+    "body": "I just installed octopi and I'm getting the following error. Anyone know why?\n\n/var/lib/gems/1.8/gems/octopi-0.2.2/lib/octopi/commit.rb:2: uninitialized constant Octopi::Base (NameError)\n\tfrom /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'\n\tfrom /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'\n\tfrom /var/lib/gems/1.8/gems/octopi-0.2.2/lib/octopi.rb:15\n\tfrom /var/lib/gems/1.8/gems/octopi-0.2.2/lib/octopi.rb:15:in `each'\n\tfrom /var/lib/gems/1.8/gems/octopi-0.2.2/lib/octopi.rb:15\n\tfrom /usr/lib/ruby/1.8/rubygems/custom_require.rb:36:in `gem_original_require'\n\tfrom /usr/lib/ruby/1.8/rubygems/custom_require.rb:36:in `require'\n\tfrom ./erasmus/github.rb:4\n\tfrom ./bots.rb:7:in `require'\n\tfrom ./bots.rb:7\n\nThe code that is using this is at http://github.com/icco/erasmus/blob/master/lib/erasmus/github.rb",
+    "html_url": "https://github.com/fcoury/octopi/issues/40",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2009-12-09T19:50:05Z",
+    "created_at": "2009-12-09T04:59:30Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/37",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/Bantik",
+      "avatar_url": "https://secure.gravatar.com/avatar/bae990401b061481ed4d7de0cfa87a18?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "Bantik",
+      "id": 22284
+    },
+    "number": 37,
+    "comments": 0,
+    "title": "Commits are being returned in reverse order.",
+    "body": "@my_repository.commits.last is actually the first commit in chronological order. I forked the project, added a test for date ordering, and fixed the bug. Pull request has been sent.",
+    "html_url": "https://github.com/fcoury/octopi/issues/37",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2009-08-24T08:12:19Z",
+    "created_at": "2009-08-22T22:42:14Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/31",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/robbyrussell",
+      "avatar_url": "https://secure.gravatar.com/avatar/a82ba1167f4d4a8d1de63820e576a87f?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "robbyrussell",
+      "id": 257
+    },
+    "number": 31,
+    "comments": 4,
+    "title": "undefined method 'code'",
+    "body": "Am getting the following error with Octopi, running in 1.8.6. Not able to reproduce on another machine.\r\n\r\n>> Octopi::User.find('robbyrussell')\r\nNoMethodError: undefined method `code' for #<String:0x38cc5dc>\r\n\tfrom /opt/local/lib/ruby/gems/1.8/gems/fcoury-octopi-0.1.0/lib/octopi.rb:200:in `submit'\r\n\tfrom /opt/local/lib/ruby/gems/1.8/gems/fcoury-octopi-0.1.0/lib/octopi.rb:136:in `get'\r\n\tfrom /opt/local/lib/ruby/gems/1.8/gems/fcoury-octopi-0.1.0/lib/octopi.rb:121:in `find'\r\n\tfrom /opt/local/lib/ruby/gems/1.8/gems/fcoury-octopi-0.1.0/lib/octopi/resource.rb:42:in `find'\r\n\tfrom /opt/local/lib/ruby/gems/1.8/gems/fcoury-octopi-0.1.0/lib/octopi/user.rb:16:in `find'\r\n\tfrom (irb):1\r\n\r\n",
+    "html_url": "https://github.com/fcoury/octopi/issues/31",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2009-06-06T04:38:57Z",
+    "created_at": "2009-04-22T23:44:06Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/24",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/runpaint",
+      "avatar_url": "https://secure.gravatar.com/avatar/68293b3e8762b9fc2412ae3d4d199a70?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "runpaint",
+      "id": 70802
+    },
+    "number": 24,
+    "comments": 0,
+    "title": "[tracker] Respect Default Branch Setting",
+    "body": "If my [issue 26](http://github.com/develop/develop.github.com/issues/#issue/26) is resolved, we need to ensure that where 'master' has been hardcoded as the default branch, the specified branch is used instead. This will also affect the Repository .clone_url method.",
+    "html_url": "https://github.com/fcoury/octopi/issues/24",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2011-03-26T21:41:29Z",
+    "created_at": "2009-04-22T22:00:50Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/23",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/runpaint",
+      "avatar_url": "https://secure.gravatar.com/avatar/68293b3e8762b9fc2412ae3d4d199a70?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "runpaint",
+      "id": 70802
+    },
+    "number": 23,
+    "comments": 1,
+    "title": "Optimal Response Format",
+    "body": "We currently request everything in YAML. Given that HTTParty abstracts the data formats so well, what are the performance implications of requesting YAML versus JSON or XML?",
+    "html_url": "https://github.com/fcoury/octopi/issues/23",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2011-03-26T21:40:27Z",
+    "created_at": "2009-04-22T21:18:19Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/20",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/runpaint",
+      "avatar_url": "https://secure.gravatar.com/avatar/68293b3e8762b9fc2412ae3d4d199a70?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "runpaint",
+      "id": 70802
+    },
+    "number": 20,
+    "comments": 1,
+    "title": "Handling of HTTP Errors",
+    "body": "I got the following stack trace when running the examples. It's presumably due to my ISP's transparent proxy being flaky, thus implying a bug in Net::HTTP's handling of a pretty common condition, but in any case we should probably handle these type of cases. We can probably deal with this when my [Document Status Codes and Their Implications](http://github.com/develop/develop.github.com/issues#issue/15) issue has been resolved. This would constitute a retryable error, I suspect.\n\n    /usr/lib/ruby/1.8/net/http.rb:2022:in `read_status_line': wrong status line: \"<!DOCTYPE html PUBLIC \\\"-//W3C//DTD XHTML 1.0 Transitional//EN\\\"\" (Net::HTTPBadResponse)\n      from /usr/lib/ruby/1.8/net/http.rb:2009:in `read_new'\n      from /usr/lib/ruby/1.8/net/http.rb:1050:in `request'\n      from /usr/lib/ruby/1.8/net/http.rb:1037:in `request'\n      from /usr/lib/ruby/1.8/net/http.rb:543:in `start'\n      from /usr/lib/ruby/1.8/net/http.rb:1035:in `request'\n      from /var/lib/gems/1.8/gems/httparty-0.4.2/lib/httparty/request.rb:69:in `perform_actual_request'\n      from /var/lib/gems/1.8/gems/httparty-0.4.2/lib/httparty/request.rb:73:in `get_response'\n      from /var/lib/gems/1.8/gems/httparty-0.4.2/lib/httparty/request.rb:40:in `perform'\n      from /var/lib/gems/1.8/gems/httparty-0.4.2/lib/httparty.rb:156:in `perform_request'\n      from /var/lib/gems/1.8/gems/httparty-0.4.2/lib/httparty.rb:122:in `get'\n      from ./examples/../lib/octopi.rb:172:in `get'\n      from ./examples/../lib/octopi.rb:155:in `submit'\n      from ./examples/../lib/octopi.rb:171:in `get'\n      from ./examples/../lib/octopi.rb:113:in `find'\n      from ./examples/../lib/octopi/resource.rb:34:in `find'\n      from ./examples/../lib/octopi/repository.rb:37:in `find'\n      from ./examples/../lib/octopi/user.rb:24:in `repository'\n      from examples/overall.rb:25\n\n",
+    "html_url": "https://github.com/fcoury/octopi/issues/20",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2010-04-25T14:54:49Z",
+    "created_at": "2009-04-22T14:24:54Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/19",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/runpaint",
+      "avatar_url": "https://secure.gravatar.com/avatar/68293b3e8762b9fc2412ae3d4d199a70?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "runpaint",
+      "id": 70802
+    },
+    "number": 19,
+    "comments": 0,
+    "title": "[tracking] Support Paginated Search Results",
+    "body": "When API bug [1](http://github.com/develop/develop.github.com/issues#issue/1) is fixed, we should support paginated results for .find_all queries. The right way to do this is make .find_all an iterator that automatically fetches the next page as needed.",
+    "html_url": "https://github.com/fcoury/octopi/issues/19",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2009-06-06T04:38:57Z",
+    "created_at": "2009-04-22T14:14:16Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/17",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/runpaint",
+      "avatar_url": "https://secure.gravatar.com/avatar/68293b3e8762b9fc2412ae3d4d199a70?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "runpaint",
+      "id": 70802
+    },
+    "number": 17,
+    "comments": 2,
+    "title": "Consider Honouring ENV['OCTOPI_DEBUG'] for Tracing Pref",
+    "body": "We should probably respect an environment variable whose value is the type of tracing the user wants. This leaves the config files for permanent preferences, such as credentials, and frees client implementations from debug logic. IOW:\r\n\r\n    $ OCTOPI_DEBUG=curl some-client\r\n\r\n",
+    "html_url": "https://github.com/fcoury/octopi/issues/17",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2010-04-25T14:49:19Z",
+    "created_at": "2009-04-20T15:53:15Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/8",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/runpaint",
+      "avatar_url": "https://secure.gravatar.com/avatar/68293b3e8762b9fc2412ae3d4d199a70?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "runpaint",
+      "id": 70802
+    },
+    "number": 8,
+    "comments": 2,
+    "title": "Investigate How Repository.find_all Treats URI Escapes",
+    "body": "The query for Repository.find_all is an Array of words concatenated with '+' signs. Oddly, separating the words with percent-encoded spaces doesn't work. What does this imply about the suitability of URI-escaping the query? We need to do something with special characters, or they'll mess up the URL we generate. Do we just escape as normal, but replace spaces with '+'?",
+    "html_url": "https://github.com/fcoury/octopi/issues/8",
+    "labels": [
+
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2010-03-06T19:31:37Z",
+    "created_at": "2009-04-20T15:33:54Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/5",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/runpaint",
+      "avatar_url": "https://secure.gravatar.com/avatar/68293b3e8762b9fc2412ae3d4d199a70?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "runpaint",
+      "id": 70802
+    },
+    "number": 5,
+    "comments": 0,
+    "title": "Handle Rate Limiting",
+    "body": "The API documentation hints that users are limited to a maximum of sixty requests per minute. We need to detect when we are being limited, and if necessary perform exponential backoff until the window has elapsed.\r\n\r\nHopefully we'll be able to detect rate limiting by looking at the status code, but if not we may need to use an internal counter.",
+    "html_url": "https://github.com/fcoury/octopi/issues/5",
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/fcoury/octopi/labels/Good+to+have",
+        "color": "ededed",
+        "name": "Good to have"
+      }
+    ]
+  },
+  {
+    "pull_request": {
+      "patch_url": null,
+      "diff_url": null,
+      "html_url": null
+    },
+    "updated_at": "2009-08-24T08:11:47Z",
+    "created_at": "2009-04-20T15:21:29Z",
+    "milestone": null,
+    "assignee": null,
+    "state": "open",
+    "url": "https://api.github.com/repos/fcoury/octopi/issues/3",
+    "closed_at": null,
+    "user": {
+      "url": "https://api.github.com/users/runpaint",
+      "avatar_url": "https://secure.gravatar.com/avatar/68293b3e8762b9fc2412ae3d4d199a70?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+      "login": "runpaint",
+      "id": 70802
+    },
+    "number": 3,
+    "comments": 1,
+    "title": "Add RDoc",
+    "body": "All public methods need documenting.",
+    "html_url": "https://github.com/fcoury/octopi/issues/3",
+    "labels": [
+      {
+        "url": "https://api.github.com/repos/fcoury/octopi/labels/On+the+works",
+        "color": "0d0145",
+        "name": "On the works"
+      }
+    ]
+  }
+]

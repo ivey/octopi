@@ -38,6 +38,10 @@ def auth(&block)
   end
 end
 
+def v3client
+  
+end
+
 # Methodized so it can be used in tests, an instance would do also.
 def yaml_api
   "github.com/api/v2/yaml"
@@ -243,6 +247,20 @@ def fake_everything
   
   
   FakeWeb.register_uri(:get, "https://github.com/fcoury/octopi/comments.atom", :response => stub_file("comments", "fcoury", "octopi", "comments.atom"))
+
+  json_api = "api.github.com"
+  json_fakes = {
+    "repos/fcoury/octopi/issues?state=open" => issues('open.json'),
+    "repos/fcoury/octopi/issues/27?"        => issues('27.json'),
+    "repos/fcoury/octopi/issues/28?"        => issues('28.json'),
+    "repos/fcoury/octopi/issues/28/comments?" => issues('28-comments.json')
+  }
+  json_fakes.each do |url, file|
+    FakeWeb.register_uri(:get, "https://#{json_api}/" + url, :response => stub_file(file))
+  end
+  FakeWeb.register_uri(:patch, "https://api.github.com/repos/fcoury/octopi/issues/28?", :response => stub_file(issues('28.json')))
+  FakeWeb.register_uri(:post, "https://api.github.com/repos/fcoury/octopi/issues/28/comments?comment=Yes%2C%20it%20is%20broken", :response => stub_file(issues('28-comment.json')))
+
 end
 
 

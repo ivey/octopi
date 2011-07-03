@@ -4,8 +4,8 @@ class Octopi::IssueSet < Array
   attr_accessor :user, :repository
   
   def initialize(array)
-    self.user = array.first.user
-    self.repository = array.first.repository
+    self.user = array.first.repo[0]
+    self.repository = array.first.repo[1]
     super(array)
   end
   

@@ -12,7 +12,7 @@ class IssueSetTest < Test::Unit::TestCase
   
   context IssueSet do
     should "be able to find a specific issue" do
-      assert_not_nil @repo.issues.find(28)
+      assert_not_nil @repo.issues.find(59)
     end
     
     should "not be able to find an issue that doesn't exist" do

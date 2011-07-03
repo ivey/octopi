@@ -1,0 +1,38 @@
+HTTP/1.1 200 OK
+Server: nginx/1.0.4
+Date: Sun, 03 Jul 2011 02:44:46 GMT
+Content-Type: application/json
+Connection: keep-alive
+Status: 200 OK
+X-RateLimit-Limit: 5000
+X-RateLimit-Remaining: 4994
+Content-Length: 1506
+
+{
+  "pull_request": {
+    "patch_url": null,
+    "diff_url": null,
+    "html_url": null
+  },
+  "updated_at": "2009-08-19T05:34:30Z",
+  "created_at": "2009-05-09T02:27:43Z",
+  "milestone": null,
+  "assignee": null,
+  "state": "closed",
+  "url": "https://api.github.com/repos/fcoury/octopi/issues/27",
+  "closed_at": "2009-05-09T19:40:35Z",
+  "user": {
+    "url": "https://api.github.com/users/BeamerCola",
+    "avatar_url": "https://secure.gravatar.com/avatar/00e2973add324113f479e41d5d1f3326?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+    "login": "BeamerCola",
+    "id": 8060
+  },
+  "number": 27,
+  "comments": 7,
+  "title": "undefined method ‘code’ for #<String:0x118ab90>",
+  "body": "Hey there, so I'm trying to get set up with this - and I keep getting the same error whenever I try anything\r\n\r\n    authenticated_with \"BeamerCola\", \"[api_token]\" do |g|\r\n      puts g.repository(\"test\")\r\n    end\r\n\r\nAny method I call that hits the `Api::get` method keeps returning:\r\n\r\n    raise RetryableAPIError, resp.code.to_i if RETRYABLE_STATUS.include? resp.code.to_i\r\n\r\nAm I missing something?  It's driving me nuts.  It doesn't work when doing non-authentication either.\r\n\r\n    user = User.find(\"fcoury\")\r\n\r\nGives me the same error.\r\n\r\nWhen I curl myself - everything works great - so I'm not seeing an issue with my API token or anything",
+  "html_url": "https://github.com/fcoury/octopi/issues/27",
+  "labels": [
+
+  ]
+}

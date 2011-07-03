@@ -34,8 +34,12 @@ module Octopi
       end
 
       options[:login] = config["github"]["user"]
-      options[:token] = config["github"]["token"]
-      
+      if config["github"]["password"]
+        options[:password] = config["github"]["password"]
+      else
+        options[:token] = config["github"]["token"]
+      end
+
       authenticated_with(options) do
         yield 
       end
@@ -43,11 +47,15 @@ module Octopi
       # Reset authenticated so if we were to do an anonymous call it would Just Work(tm)
       Api.authenticated = false
       Api.api = AnonymousApi.instance
+      ApiV3.auth = { }
     end
   end
   
   def authenticated_with(options, &block)
     begin
+      if options[:login] && options[:password]
+        ApiV3.auth = { :login => options[:login], :password => options[:password] }
+      end
 
       if options[:token].nil? && !options[:password].nil?
         options[:token] = grab_token(options[:login], options[:password])
@@ -71,6 +79,7 @@ module Octopi
       # Reset authenticated so if we were to do an anonymous call it would Just Work(tm)
       Api.authenticated = false
       Api.api = AnonymousApi.instance
+      ApiV3.auth = { }
     end
   end
     

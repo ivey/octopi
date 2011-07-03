@@ -1,5 +1,8 @@
 require 'singleton'
 require File.join(File.dirname(__FILE__), "self")
+require 'time'
+require 'api_smith'
+
 module Octopi
   # Dummy class, so AnonymousApi and AuthApi have somewhere to inherit from
   class Api

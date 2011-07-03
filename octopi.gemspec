@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency(%q<httparty>, [">= 0.4.5"])
   s.add_dependency(%q<mechanize>, [">= 0.9.3"])
   s.add_dependency(%q<api_cache>, [">= 0"])
+  s.add_dependency(%q<api_smith>, [">= 0"])
   s.add_development_dependency(%q<shoulda>, [">= 0"])
   s.add_development_dependency(%q<fakeweb>, [">= 0"])
 end
